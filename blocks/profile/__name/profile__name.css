@@ -9,10 +9,11 @@
     color: #FFFFFF;
   }
   
-  @media screen and (max-width: 730px) {
+  @media screen and (max-width: 799px) {
     .profile__name {
       font-size: 27px;
       line-height: 33px;
       text-align: center;
+      align-self: center;
     }
   }

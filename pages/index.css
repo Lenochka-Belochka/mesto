@@ -13,8 +13,8 @@
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__caption/profile__caption.css);
 @import url(../blocks/profile/__button/profile__button.css);
-@import url(../blocks/profile/__button/fact/profile__button_fact_add.css);
-@import url(../blocks/profile/__button/fact/profile__button_fact_edit.css);
+@import url(../blocks/profile/__button/_fact/profile__button_fact_add.css);
+@import url(../blocks/profile/__button/_fact/profile__button_fact_edit.css);
 
 @import url(../blocks/photo-grid/photo-grid.css);
 @import url(../blocks/photo-grid/__list/photo-grid__list.css);

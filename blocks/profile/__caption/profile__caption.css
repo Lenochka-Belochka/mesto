@@ -9,8 +9,8 @@
     color: #FFFFFF;
   }
   
-  @media screen and (max-width: 730px) {
-    .profile__work {
+  @media screen and (max-width: 799px) {
+    .profile__caption {
       font-size: 14px;
       line-height: 17px;
       text-align: center;

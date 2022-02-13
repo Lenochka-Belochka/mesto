@@ -7,8 +7,12 @@
     margin: 0;
   }
   
-  @media screen and (max-width: 730px) {
+  @media screen and (max-width: 799px) {
     .profile__description {
       margin-top: 14px;
+      padding: 22.25px 19px 36px 19px;
+      grid-template-columns:  1fr 30px;
+      grid-column-gap: 10px;
+      align-self: center;
     }
   }
