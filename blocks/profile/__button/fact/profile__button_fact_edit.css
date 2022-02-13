@@ -1,0 +1,11 @@
+.profile__button_fact_edit {
+    background-image: url(../../../../images/profile/profile-button-edit.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #fff;
+    background-size: 60%;
+  
+    width: 24px;
+    height: 24px;
+    align-self: center;
+  }

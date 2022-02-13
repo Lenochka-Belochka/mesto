@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="Автор: Елена Кочерягина, Проектная работа 3: Mesto, Сайт создан в рамках учебы в Яндекс Практикум (курс: Веб-разработка)">
+    <link rel="stylesheet"  type="text/css" href="./pages/index.css">
+    <title>Mesto</title>
+</head>
+<body class="page">
+    <header class="header">
+        <img class="header__logo" src="./images/header/logo.svg" alt="Логотип сайта">
+    </header>
+    <main class="content">
+        <section class="profile">
+            <div class="profile__avatar">
+                <img class="profile__image" src="../mesto/images/profile/Avatar.png" alt="Аватар">
+            </div>
+            <div class="profile__description">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button class="profile__button profile__button_fact_edit" title="Редактировать профиль"> </button>
+                <p class="profile__caption">Исследователь океана</p>
+            </div>
+            <button class="profile__button profile__button_fact_add" title="Добавить фото"></button>
+        </section>
+        <section class="photo-grid">
+            <ul class="photo-grid__list">
+                <li class="photo-grid__item">
+                    <img src="../mesto/images/places/Unknown.jpeg" alt="Флоренция" class="photo-grid__image">
+                    <div class="photo-grid__item-description">
+                        <h2 class="photo-grid__item-title">Флоренция</h2>
+                        <button class="photo-grid__button photo-grid__button_active_like" title="Нравится"></button>
+                    </div>
+                </li>
+                <li class="photo-grid__item">
+                    <img src="../mesto/images/places/barselona.jpeg" alt="Барселона" class="photo-grid__image">
+                    <div class="photo-grid__item-description">
+                        <h2 class="photo-grid__item-title">Барселона</h2>
+                        <button class="photo-grid__button photo-grid__button_active_like" title="Нравится"></button>
+                    </div>
+                </li>
+                <li class="photo-grid__item">
+                    <img src="../mesto/images/places/париж.jpeg" alt="Париж" class="photo-grid__image">
+                    <div class="photo-grid__item-description">
+                        <h2 class="photo-grid__item-title">Париж</h2>
+                        <button class="photo-grid__button photo-grid__button_active_like" title="Нравится"></button>
+                    </div>
+                </li>
+                <li class="photo-grid__item">
+                    <img src="../mesto/images/places/палермо.jpeg" alt="Палермо" class="photo-grid__image">
+                    <div class="photo-grid__item-description">
+                        <h2 class="photo-grid__item-title">Палермо</h2>
+                        <button class="photo-grid__button photo-grid__button_active_like" title="Нравится"></button>
+                    </div>
+                </li>
+                <li class="photo-grid__item">
+                    <img src="../mesto/images/places/Рейкьявик.jpeg" alt="Рейкьявик" class="photo-grid__image">
+                    <div class="photo-grid__item-description">
+                        <h2 class="photo-grid__item-title">Рейкьявик</h2>
+                        <button class="photo-grid__button photo-grid__button_active_like" title="Нравится"></button>
+                    </div>
+                </li>
+                <li class="photo-grid__item">
+                    <img src="../mesto/images/places/Стамбул.jpeg" alt="Стамбул" class="photo-grid__image">
+                    <div class="photo-grid__item-description">
+                        <h2 class="photo-grid__item-title">Стамбул</h2>
+                        <button class="photo-grid__button photo-grid__button_active_like" title="Нравится"></button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+    <p class="footer__copyright">&copy;2020 Mesto Russia</p>
+    </footer>
+
+    <section class="popup popup-edit">
+        <div class="popup__frame">
+            <button class="popup__button popup__close-button popup-edit__close-button" type="reset" aria-label="закрыть"></button>
+            <form class="form form-edit" name="info" novalidate>
+                <h2 class="form__title">Редактировать профиль</h2>
+                <fieldset class="form__fieldset">
+                    <input class="form__input form__input-name" type="text" id="profile-name" name="name" aria-label="имя" placeholder="Имя" required minlength="3" maxlength="40">
+                    <input class="form__input form__input-caption" type="text" id="profile-caption" name="about" aria-label="подпись" placeholder="Подпись" required minlength="3" maxlength="200">
+                </fieldset>
+                <button type="submit" class="popup__button popup__save-button popup__save-button_action_submit">Сохранить</button>
+            </form>
+        </div>
+    </section>
+ 
+    <script src="../mesto/pages/index.js"></script>
+</body>
+</html>
