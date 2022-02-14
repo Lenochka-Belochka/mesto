@@ -1,7 +1,7 @@
 .profile {
     max-width: 880px;
     margin: 0 auto;
-    padding: 40px 200px 0 200px;
+    padding: 40px 200px 50px 200px;
     background-color: #000000;
     display: flex;
     justify-content: space-between;

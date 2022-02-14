@@ -1,5 +1,5 @@
-.popup__close-button {
-    background-image: url(../../../images/popup/Close\ Icon.png);
+.popup__button_type_close {
+    background-image: url(../../../../images/popup/Close\ Icon.png);
     background-repeat: no-repeat;
     background-size: 100%;
     height: 32px;

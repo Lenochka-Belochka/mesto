@@ -3,7 +3,7 @@
     background-repeat: no-repeat;
     background-position: center;
     border: 1px solid #fff;
-    background-size: 60%;
+    background-size: 10px 10px;
     width: 24px;
     height: 24px;
     align-self: center;
@@ -13,5 +13,6 @@
     .profile__button_fact_edit {
       width: 18px;
       height: 18px;
+      background-size: 7.5px 7.5px;
     }
   }

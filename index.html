@@ -18,10 +18,10 @@
             </div>
             <div class="profile__description">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button class="profile__button profile__button_fact_edit" title="Редактировать профиль"> </button>
+                <button class="profile__button profile__button_fact_edit" type="button" title="Редактировать профиль"> </button>
                 <p class="profile__caption">Исследователь океана</p>
             </div>
-            <button class="profile__button profile__button_fact_add" title="Добавить фото"></button>
+            <button class="profile__button profile__button_fact_add" type="button" title="Добавить фото"></button>
         </section>
         <section class="photo-grid">
             <ul class="photo-grid__list">
@@ -29,42 +29,42 @@
                     <img src="./images/places/Unknown.jpeg" alt="Флоренция" class="photo-grid__image">
                     <div class="photo-grid__item-description">
                         <h2 class="photo-grid__item-title">Флоренция</h2>
-                        <button class="photo-grid__button photo-grid__button_active_like" title="Нравится"></button>
+                        <button class="photo-grid__button photo-grid__button_active" type="button" title="Нравится"></button>
                     </div>
                 </li>
                 <li class="photo-grid__item">
                     <img src="./images/places/barselona.jpeg" alt="Барселона" class="photo-grid__image">
                     <div class="photo-grid__item-description">
                         <h2 class="photo-grid__item-title">Барселона</h2>
-                        <button class="photo-grid__button photo-grid__button_active_like" title="Нравится"></button>
+                        <button class="photo-grid__button photo-grid__button_active" title="Нравится"></button>
                     </div>
                 </li>
                 <li class="photo-grid__item">
                     <img src="./images/places/париж.jpeg" alt="Париж" class="photo-grid__image">
                     <div class="photo-grid__item-description">
                         <h2 class="photo-grid__item-title">Париж</h2>
-                        <button class="photo-grid__button photo-grid__button_active_like" title="Нравится"></button>
+                        <button class="photo-grid__button photo-grid__button_active" title="Нравится"></button>
                     </div>
                 </li>
                 <li class="photo-grid__item">
                     <img src="./images/places/палермо.jpeg" alt="Палермо" class="photo-grid__image">
                     <div class="photo-grid__item-description">
                         <h2 class="photo-grid__item-title">Палермо</h2>
-                        <button class="photo-grid__button photo-grid__button_active_like" title="Нравится"></button>
+                        <button class="photo-grid__button photo-grid__button_active" title="Нравится"></button>
                     </div>
                 </li>
                 <li class="photo-grid__item">
                     <img src="./images/places/Ницца.jpeg" alt="Ницца" class="photo-grid__image">
                     <div class="photo-grid__item-description">
                         <h2 class="photo-grid__item-title">Ницца</h2>
-                        <button class="photo-grid__button photo-grid__button_active_like" title="Нравится"></button>
+                        <button class="photo-grid__button photo-grid__button_active" title="Нравится"></button>
                     </div>
                 </li>
                 <li class="photo-grid__item">
                     <img src="./images/places/Стамбул.jpeg" alt="Стамбул" class="photo-grid__image">
                     <div class="photo-grid__item-description">
                         <h2 class="photo-grid__item-title">Стамбул</h2>
-                        <button class="photo-grid__button photo-grid__button_active_like" title="Нравится"></button>
+                        <button class="photo-grid__button photo-grid__button_active" title="Нравится"></button>
                     </div>
                 </li>
             </ul>
@@ -74,20 +74,20 @@
     <p class="footer__copyright">&copy;2020 Mesto Russia</p>
     </footer>
 
-    <section class="popup popup-edit">
+    <section class="popup">
         <div class="popup__frame">
-            <button class="popup__button popup__close-button" type="reset" aria-label="закрыть"></button>
+            <button class="popup__button popup__button_type_close" type="reset" aria-label="закрыть"></button>
             <form class="form form-edit" name="info" novalidate>
                 <h2 class="form__title">Редактировать профиль</h2>
                 <fieldset class="form__fieldset">
-                    <input class="form__input form__input-name" type="text" id="profile-name" name="name" aria-label="имя" placeholder="Имя" required minlength="3" maxlength="40">
-                    <input class="form__input form__input-caption" type="text" id="profile-caption" name="about" aria-label="подпись" placeholder="Подпись" required minlength="3" maxlength="200">
+                    <input class="form__input form__input_type_name" type="text" id="profile-name" name="name" aria-label="имя" placeholder="Имя" required minlength="3" maxlength="40">
+                    <input class="form__input form__input_type_caption" type="text" id="profile-caption" name="about" aria-label="подпись" placeholder="Подпись" required minlength="3" maxlength="200">
                 </fieldset>
-                <button type="submit" class="popup__button popup__save-button">Сохранить</button>
+                <button type="submit" class="popup__button popup__button_type_save">Сохранить</button>
             </form>
         </div>
     </section>
  
-    <script src="../mesto/pages/index.js"></script>
+    <script src="./pages/index.js"></script>
 </body>
 </html>

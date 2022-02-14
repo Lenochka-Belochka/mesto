@@ -1,8 +1,17 @@
 .photo-grid__button {
-    background: none;
-    box-shadow: none;
-    border: none;
-    outline: none;
-    padding: 0;
-    margin: 0;
+      width: 22px;
+      height: 19px;
+      box-sizing: border-box;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      background-image: url(../../../images/places/Vector.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #FFFFFF;
+      transition: opacity .3s ease;
+  }
+
+  .photo-grid__button:hover {
+    opacity: .3;
   }
