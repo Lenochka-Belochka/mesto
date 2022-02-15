@@ -8,12 +8,17 @@ const Caption = document.querySelector('.profile__caption')
 const popup = document.querySelector('.popup')
 const formSubmit = document.querySelector('.form')
 
+
 function openPopup() {
     popup.classList.add('popup_opened');
-}
-function closePopup() { //закрытие popup
+    popupName.value = Name.textContent;
+    popupCaption.value = Caption.textContent;
+    }
+
+function closePopup() {
     popup.classList.remove('popup_opened');
 }
+
 
 editButton.addEventListener('click', openPopup);
 popupButtonClose.addEventListener('click', closePopup);
@@ -22,7 +27,7 @@ popupButtonClose.addEventListener('click', closePopup);
 function formSubmitHandler (evt) {
     evt.preventDefault();
     popupName.getAttribute('value');
-    popupCaption .getAttribute('value');
+    popupCaption.getAttribute('value');
     Name.textContent = popupName.value;
     Caption.textContent = popupCaption.value;
     closePopup();
