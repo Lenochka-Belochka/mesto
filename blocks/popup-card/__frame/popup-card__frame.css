@@ -1,0 +1,18 @@
+.popup-card__frame {
+  max-width: 75vw;
+  max-height: 75vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+@media screen and (max-width: 520px) {
+  .popup-card__frame {
+    width: 282px;
+    margin: 0 auto;
+  }
+}
+
+
