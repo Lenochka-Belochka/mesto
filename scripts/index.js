@@ -16,8 +16,8 @@ const popupButtonSave = document.querySelector(".popup__button_type_save");
 //Объявляем переменные для работы с попапом из карточки
 const popupCard = document.querySelector(".popup_type_card");
 const buttonCloseCard = document.querySelector(".popup__button_type_ex");
-const popupCardImage = popupCard.querySelector(".popup-card__image");
-const popupCardTitle = popupCard.querySelector(".popup-card__title");
+const popupCardImage = popupCard.querySelector(".popup__image");
+const popupCardTitle = popupCard.querySelector(".popup__title");
 
 // DOM
 const popupName = popupEd.querySelector(".form__input_type_name");

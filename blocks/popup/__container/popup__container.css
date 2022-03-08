@@ -1,4 +1,4 @@
-.popup-card__frame {
+.popup__container {
   max-width: 75vw;
   max-height: 75vh;
   position: absolute;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 520px) {
-  .popup-card__frame {
+  .popup__container {
     width: 282px;
     margin: 0 auto;
   }
