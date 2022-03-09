@@ -85,8 +85,10 @@ function addLikeOnPhoto(element) {
   element.classList.toggle("photo-grid__button_active");
 }
 
+
+
 //новая карточка
-function createNewCard(name, link) {
+function createNewCard(item) {
   const cardElement = cardTemplate
     .querySelector(".photo-grid__item")
     .cloneNode(true);
@@ -96,9 +98,9 @@ function createNewCard(name, link) {
     ".photo-grid__button_delete"
   );
   const cardElementPicture = cardElement.querySelector(".photo-grid__image");
-  cardElementPicture.alt = name;
-  cardElementPicture.src = link;
-  cardElementTitle.textContent = name;
+  cardElementPicture.alt = item.name;
+  cardElementPicture.src = item.link;
+  cardElementTitle.textContent = item.name;
   cardElementLike.addEventListener("click", () => {
     addLikeOnPhoto(cardElementLike);
   });
@@ -112,25 +114,20 @@ function createNewCard(name, link) {
   return cardElement;
 }
 
-// добавляем стартовые картинки
-function addInitialPhoto() {
-  initialCards.forEach((item) => {
-    const newCardAdded = createNewCard(item.name, item.link);
-    elements.append(newCardAdded);
-  });
-}
-addInitialPhoto();
-
-//вставка карточки из формы
-function addCardForm() {
-  const newCardAdded = createNewCard(popupPlace.value, popupLink.value);
+function renderCard (item) {
+  const newCardAdded = createNewCard(item);
   elements.prepend(newCardAdded);
 }
 
+initialCards.forEach((item) => renderCard(item));
+
 // отправка формы новой карточки
 function addNewCard(evt) {
-  evt.preventDefault(); //
-  addCardForm();
+  evt.preventDefault(); 
+  const cardInformation = {};
+  cardInformation.name = popupPlace.value;
+  cardInformation.link = popupLink.value;
+  renderCard(cardInformation);
   popupPlace.value = "";
   popupLink.value = "";
   closePopup(popupAdd);

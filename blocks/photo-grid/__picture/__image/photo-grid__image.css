@@ -1,7 +1,6 @@
 .photo-grid__image {
-  display: flex;
-  position: absolute;
-  width: 100%;
+  position: relative;
+  width: 282px;
   height: 282px;
   object-fit: cover;
   object-position: center 0px;
