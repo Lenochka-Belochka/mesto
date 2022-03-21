@@ -4,11 +4,15 @@ const popupEd = document.querySelector(".popup_type_edit");
 const popupButtonClose = document.querySelector(".popup__button_type_close");
 const profileName = document.querySelector(".profile__name");
 const profileCaption = document.querySelector(".profile__caption");
+const formElement = document.querySelector('#profileForm');
 
 //Объявляем еременные для поп-ап редактирования блока карточек
 const cardButton = document.querySelector(".profile__button_fact_add");
 const popupAdd = document.querySelector(".popup_type_add");
 const popupButtonExit = document.querySelector(".popup__button_type_exit");
+const cardAddFormElement = document.querySelector('#addPlace');
+const photoName = document.querySelector('#photoName');
+const photoLink = document.querySelector('#photoLink');
 
 //Объявляем переменные для поп-ап общие
 const popupButtonSave = document.querySelector(".popup__button_type_save");
@@ -21,9 +25,7 @@ const popupCardTitle = popupCard.querySelector(".popup__title");
 
 // DOM
 const popupName = popupEd.querySelector(".form__input_type_name");
-const popupCaption = popupEd.querySelector(
-  ".form__input_type_caption"
-);
+const popupCaption = popupEd.querySelector(".form__input_type_caption");
 
 const popupPlace = popupAdd.querySelector(".form__input_type_place");
 const popupLink = popupAdd.querySelector(".form__input_type_link");
@@ -34,19 +36,27 @@ const elements = document.querySelector(".photo-grid__list");
 // template
 const cardTemplate = document.querySelector("#grid-template").content;
 
+
+
+
 // функция открытия поп ап
 function openPopup(popupEd) {
   popupEd.classList.add("popup_opened");
+  document.addEventListener('keydown', closePopupClickOnEscapeButton);
 }
 //функция закрытия поп ап
 function closePopup(popupEd) {
   popupEd.classList.remove("popup_opened");
+  document.removeEventListener('keydown', closePopupClickOnEscapeButton);
 }
 
 //открытие поп ап редактирования
 function openEditPopup() {
   popupName.value = profileName.textContent;
+  hideInputError(formElement, popupName, commonObject.inputErrorClass, commonObject.errorClass);
   popupCaption.value = profileCaption.textContent;
+  hideInputError(formElement, popupCaption, commonObject.inputErrorClass, commonObject.errorClass);
+  enableSubmitButton(popupButtonSave, commonObject.inactiveButtonClass);
   openPopup(popupEd);
 }
 
@@ -62,7 +72,6 @@ popupEd.addEventListener("submit", submitHandler);
 
 
 //события для окна добавления картинки
-cardButton.addEventListener("click", () => openPopup(popupAdd));
 popupButtonExit.addEventListener("click", () => closePopup(popupAdd));
 
 //открытие окна при клике на картинку
@@ -128,12 +137,50 @@ function addNewCard(evt) {
   cardInformation.name = popupPlace.value;
   cardInformation.link = popupLink.value;
   renderCard(cardInformation);
-  popupPlace.value = "";
-  popupLink.value = "";
   closePopup(popupAdd);
+  popupPlace = " ";
+  popupLink = " ";
 }
 popupAdd.addEventListener("submit", addNewCard);
 
 //события для окна редактирования
 buttonEd.addEventListener("click", openEditPopup);
 popupButtonClose.addEventListener("click", () => closePopup(popupEd));
+
+
+
+
+// Создаю функцию закрытия попапа по клику на поле
+function closePopupClickOnOverlay(popupEd) {
+  return function(event){
+  if (event.target === event.currentTarget){
+    closePopup(popupEd);
+  }
+}
+}
+
+// Создаю функцию закрытия попапа при клике на Esc
+function closePopupClickOnEscapeButton(event) {
+  if (event.key === 'Escape'){
+    let popupOpen = document.querySelector('.popup_opened');
+    closePopup(popupOpen);
+  }
+}
+
+
+//открытие поп ап добавления карточки
+function openAddCardPopup() {
+  cardAddFormElement.reset();
+  hideInputError(cardAddFormElement, photoName, commonObject.inputErrorClass, commonObject.errorClass);
+  hideInputError(cardAddFormElement, photoLink, commonObject.inputErrorClass, commonObject.errorClass);
+  disableSubmitButton(popupButtonSave, commonObject.inactiveButtonClass);
+  openPopup(popupAdd);
+}
+
+cardButton.addEventListener("click", openAddCardPopup);
+
+
+// Слушатели событий закрытия попапов при клике на поле
+popupAdd.addEventListener('click', closePopupClickOnOverlay(popupAdd));
+popupEd.addEventListener('click', closePopupClickOnOverlay(popupEd));
+popupCard.addEventListener('click', closePopupClickOnOverlay(popupCard));

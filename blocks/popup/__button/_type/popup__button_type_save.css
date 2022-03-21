@@ -6,8 +6,8 @@
   text-align: center;
   font-weight: normal;
   background-color: #000;
+  margin-top: 8px;
   color: #fff;
-  margin-top: 18px;
   transition: background-color 0.3s linear;
   border-radius: 2px;
   align-self: center;

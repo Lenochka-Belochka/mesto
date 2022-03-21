@@ -57,31 +57,33 @@
           type="reset"
           aria-label="закрыть"
         ></button>
-        <form class="form form-edit" name="info" novalidate>
+        <form class="form form-edit" id="profileForm" name="info" novalidate>
           <h2 class="form__title">Редактировать профиль</h2>
           <fieldset class="form__fieldset">
             <input
               class="form__input form__input_type_name"
               type="text"
-              id="profile-name"
+              id="profileName"
               name="name"
               aria-label="имя"
               placeholder="Имя"
               required
-              minlength="3"
+              minlength="2"
               maxlength="40"
             />
+            <span class="popup__error profileName-error"></span>
             <input
               class="form__input form__input_type_caption"
               type="text"
-              id="profile-caption"
+              id="profileCaption"
               name="about"
               aria-label="Подпись"
               placeholder="О себе"
               required
-              minlength="3"
+              minlength="2"
               maxlength="200"
             />
+            <span class="popup__error profileCaption-error"></span>
           </fieldset>
           <button type="submit" class="popup__button popup__button_type_save">
             Сохранить
@@ -97,29 +99,31 @@
           type="reset"
           aria-label="закрыть"
         ></button>
-        <form class="form form-add" name="add-place" novalidate>
+        <form class="form form-add" name="addPlace" id="addPlace" novalidate>
           <h2 class="form__title">Новое место</h2>
           <fieldset class="form__fieldset">
             <input
               class="form__input form__input_type_place"
               type="text"
-              id="photo-name"
+              id="photoName"
               name="name"
               aria-label="имя"
               placeholder="Название"
               required
-              minlength="3"
-              maxlength="40"
+              minlength="2"
+              maxlength="30"
             />
+            <span class="popup__error photoName-error"></span>
             <input
               class="form__input form__input_type_link"
               type="url"
-              id="photo-link"
+              id="photoLink"
               aria-label="ссылка"
               placeholder="Ссылка на картинку"
               name="link"
               required
             />
+            <span class="popup__error photoLink-error"></span>
           </fieldset>
           <button type="submit" class="popup__button popup__button_type_save">
             Создать
@@ -160,5 +164,6 @@
     </template>
     <script src="./scripts/initialCards.js"></script>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
