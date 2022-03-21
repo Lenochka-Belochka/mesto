@@ -35,6 +35,12 @@ const commonObject = {
     }
   };
   
+  // Создаю функцию, которая  проверяет наличие неволидных полей
+  const hasInvalidInput = (inputList) =>{
+    return inputList.some((inputElement) => {
+      return !inputElement.validity.valid;
+    })
+  }
 
   // Создаю функцию, которая добавляет слушатели 
   const setEventListeners = (formElement, {inputSelector, submitButtonSelector, inactiveButtonClass, ...rest}) => {
@@ -49,19 +55,8 @@ const commonObject = {
     });
   };
   
-  // Создаю функцию, которая  проверяет наличие неволидных полей
-  const hasInvalidInput = (inputList) =>{
-    return inputList.some((inputElement) => {
-      return !inputElement.validity.valid;
-    })
-  }
   
-
-  // Создаю функцию, которая разблокирует кнопку 
-    const enableSubmitButton = (buttonElement, inactiveButtonClass) => {
-        buttonElement.classList.remove(inactiveButtonClass);
-        buttonElement.removeAttribute('disabled');
-      }
+  
 
   // Создаю функцию, которая блокирует кнопку
   const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
@@ -69,6 +64,12 @@ const commonObject = {
     buttonElement.setAttribute('disabled', true);
   }
 
+
+  // Создаю функцию, которая разблокирует кнопку 
+  const enableSubmitButton = (buttonElement, inactiveButtonClass) => {
+    buttonElement.classList.remove(inactiveButtonClass);
+    buttonElement.removeAttribute('disabled');
+  }
   
   // tooggle кнопки
   const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
