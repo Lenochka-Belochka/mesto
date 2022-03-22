@@ -4,7 +4,7 @@ const popupEd = document.querySelector(".popup_type_edit");
 const popupButtonClose = document.querySelector(".popup__button_type_close");
 const profileName = document.querySelector(".profile__name");
 const profileCaption = document.querySelector(".profile__caption");
-const formElement = document.querySelector('#profileForm');
+const formProfileElement = document.querySelector('#profileForm');
 
 //Объявляем еременные для поп-ап редактирования блока карточек
 const cardButton = document.querySelector(".profile__button_fact_add");
@@ -53,22 +53,22 @@ function closePopup(popupEd) {
 //открытие поп ап редактирования
 function openEditPopup() {
   popupName.value = profileName.textContent;
-  hideInputError(formElement, popupName, commonObject.inputErrorClass, commonObject.errorClass);
+  hideInputError(formProfileElement, popupName, commonObject.inputErrorClass, commonObject.errorClass);
   popupCaption.value = profileCaption.textContent;
-  hideInputError(formElement, popupCaption, commonObject.inputErrorClass, commonObject.errorClass);
+  hideInputError(formProfileElement, popupCaption, commonObject.inputErrorClass, commonObject.errorClass);
   enableSubmitButton(popupButtonSave, commonObject.inactiveButtonClass);
   openPopup(popupEd);
 }
 
 
 //функция для сохранения значений в профиле редактирования
-function submitHandler(evt) {
+function submitProfileForm(evt) {
   evt.preventDefault();
   profileName.textContent = popupName.value;
   profileCaption.textContent = popupCaption.value;
   closePopup(popupEd);
 }
-popupEd.addEventListener("submit", submitHandler);
+popupEd.addEventListener("submit", submitProfileForm);
 
 
 //события для окна добавления картинки
@@ -130,6 +130,7 @@ function renderCard (item) {
 
 initialCards.forEach((item) => renderCard(item));
 
+
 // отправка формы новой карточки
 function addNewCard(evt) {
   evt.preventDefault(); 
@@ -138,8 +139,8 @@ function addNewCard(evt) {
   cardInformation.link = popupLink.value;
   renderCard(cardInformation);
   closePopup(popupAdd);
-  popupPlace = " ";
-  popupLink = " ";
+  popupPlace.value = " ";
+  popupLink.value = " ";
 }
 popupAdd.addEventListener("submit", addNewCard);
 
@@ -162,7 +163,7 @@ function closePopupClickOnOverlay(popupEd) {
 // Создаю функцию закрытия попапа при клике на Esc
 function closePopupClickOnEscapeButton(event) {
   if (event.key === 'Escape'){
-    let popupOpen = document.querySelector('.popup_opened');
+    const popupOpen = document.querySelector('.popup_opened');
     closePopup(popupOpen);
   }
 }
@@ -173,6 +174,7 @@ function openAddCardPopup() {
   cardAddFormElement.reset();
   hideInputError(cardAddFormElement, photoName, commonObject.inputErrorClass, commonObject.errorClass);
   hideInputError(cardAddFormElement, photoLink, commonObject.inputErrorClass, commonObject.errorClass);
+  enableValidation(commonObject);
   disableSubmitButton(popupButtonSave, commonObject.inactiveButtonClass);
   openPopup(popupAdd);
 }

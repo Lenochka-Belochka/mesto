@@ -9,3 +9,7 @@
   margin: 0;
   color: #000;
 }
+
+.photo-grid__image:hover { 
+    opacity: 0.3; 
+  } 
