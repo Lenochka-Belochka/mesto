@@ -29,8 +29,8 @@ function closePopupClickOnEscapeButton(event) {
 }
 
 
-function createNewCard(newName, newLink, cardTemplate, imagePopup) {
-  const cardItem = new Card(newName, newLink, cardTemplate, imagePopup);
+function createNewCard(newName, newLink, cardTemplate, popupCard) {
+  const cardItem = new Card(newName, newLink, cardTemplate, popupCard);
   return cardItem.useCard();
 }
 
@@ -40,7 +40,7 @@ function pasteCard(cardEl) {
 
 function addInitialCards() {
   initialCards.forEach((card) => {
-    pasteCard(createNewCard(card.name, card.link, '#grid-template', imagePopup));
+    pasteCard(createNewCard(card.name, card.link, '#grid-template', popupCard));
  });
 }
 
@@ -48,7 +48,7 @@ function addInitialCards() {
 function saveNewItem(evt) {
   evt.preventDefault();
 
-  pasteCard(createNewCard(popupPlace.value, popupLink.value, '#grid-template', imagePopup));
+  pasteCard(createNewCard(popupPlace.value, popupLink.value, '#grid-template', popupCard));
 
   closePopup(popupAdd);
 }

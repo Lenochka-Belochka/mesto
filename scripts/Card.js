@@ -8,8 +8,8 @@ export class Card {
     this._popupElement = popupElement;
 
 
-    this._imageElement = popupElem.querySelector('.popup__image');
-    this._titleElement = popupElem.querySelector('.popup__title');
+    this._imageEl = popupElem.querySelector('.popup__image');
+    this._titleEl = popupElem.querySelector('.popup__title');
  }
 
  _getTemplate() {
@@ -23,7 +23,6 @@ export class Card {
   }
 
 
-
   //лайк
  _addLikeOnPhoto(evt) {
     evt.target.classList.toggle("photo-grid__button_active");
@@ -35,12 +34,12 @@ export class Card {
   }
 
   //открытие окна при клике на картинку
- _openPopupCard(cardData, popupElement) {
-    this._imageElement.src = cardData.src;
-    this._imageElemen.alt = cardData.name;
-    this._titleElement.textContent = cardData.name;
+ _openPopupCard(cardData, popupEl) {
+    this._imageEl.src = cardData.src;
+    this._imageEl.alt = cardData.name;
+    this._titleEl.textContent = cardData.name;
 
-    openPopup(popupElement);
+    openPopup(popupEl);
   }
 
  
@@ -57,7 +56,7 @@ export class Card {
 
     // клик на картинку
     this._element.querySelector('.photo-grid__image').addEventListener('click', () => {
-      this._openPopupCard({src: this._image, name: this._text}, this._popupElement);
+      this._openPopupCard({src: this._image, name: this._text}, this._popupEl);
     })
 
   }
