@@ -61,11 +61,6 @@ const buttonCloseCard = document.querySelector(".popup__button_type_ex");
 const popupCardImage = popupCard.querySelector(".popup__image");
 const popupCardTitle = popupCard.querySelector(".popup__title");
 
-/** форма редактирования профиля */
-const profileEditForm = document.querySelector('.form-edit');
-
-/** форма добавления карточки */
-const itemAddForm = document.querySelector('.form-add');
 // DOM
 const popupName = popupEd.querySelector(".form__input_type_name");
 const popupCaption = popupEd.querySelector(".form__input_type_caption");
@@ -78,3 +73,4 @@ const elements = document.querySelector(".photo-grid__list");
 
 // template
 const cardTemplate = document.querySelector("#grid-template").content;
+

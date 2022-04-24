@@ -85,35 +85,33 @@ function submitProfileForm(evt) {
 }
 
 
-
 addInitialCards(initialCards);
 
-
-const profileEditValidator = new FormValidator(commonObject, popupEd);
+//Экземпляр класса FormValidator 
+const profileEditValidator = new FormValidator(commonObject, formProfileElement);
 profileEditValidator.enableValidation();
 
-
-const cardAddFormElementValidator = new FormValidator(commonObject, popupAdd);
+//Экземпляр класса FormValidator 
+const cardAddFormElementValidator = new FormValidator(commonObject, cardAddFormElement);
 cardAddFormElementValidator.enableValidation();
 
 
-popupEd.addEventListener('click', () => {openEditPopup(profileEditValidator); });
+buttonEd.addEventListener('click', () => {openEditPopup(profileEditValidator); });
+cardButton.addEventListener('click', () => {openAddCardPopup(cardAddFormElementValidator);});
 
-popupAdd.addEventListener('click', () => {openAddCardPopup(cardAddFormElementValidator);});
-
-popupEd.addEventListener('submit', submitProfileForm);
-popupAdd.addEventListener('submit', saveNewItem);
+formProfileElement.addEventListener('submit', submitProfileForm);
+cardAddFormElement.addEventListener('submit', saveNewItem);
 
 
 popupAdd.addEventListener('click', closePopupClickOnOverlay(popupAdd));
 popupEd.addEventListener('click', closePopupClickOnOverlay(popupEd));
 popupCard.addEventListener('click', closePopupClickOnOverlay(popupCard));
 
+popupButtonExit.addEventListener("click", () => closePopup(popupAdd));
+popupButtonClose.addEventListener("click", () => closePopup(popupEd));
 buttonCloseCard.addEventListener("click", () => closePopup(popupCard));
 
 
-cardButton.addEventListener("click", openAddCardPopup);
 
-buttonEd.addEventListener("click", openEditPopup);
 
 
