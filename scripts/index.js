@@ -12,25 +12,27 @@ function closePopup(popupEl) {
   document.removeEventListener('keydown', closePopupClickOnEscapeButton);
 }
 
+// Создаю функцию закрытия попапа при клике на Esc
+function closePopupClickOnEscapeButton(event) {
+  if (event.key === 'Escape'){
+    const showPopup = document.querySelector('.popup_opened');
+    closePopup(showPopup);
+  }
+}
 // Создаю функцию закрытия попапа по клику на поле
-function closePopupClickOnOverlay(){
+
+function closePopupClickOnOverlay(popupEd) {
   return function(event){
   if (event.target === event.currentTarget){
     closePopup(popupEd);
   }
 }
 }
-// Создаю функцию закрытия попапа при клике на Esc
-function closePopupClickOnEscapeButton(event) {
-  if (event.key === 'Escape'){
-    const popupOpen = document.querySelector('.popup_opened');
-    closePopup(popupOpen);
-  }
-}
 
 
-function createNewCard(newName, newLink, cardTemplate, popupCard) {
-  const cardItem = new Card(newName, newLink, cardTemplate, popupCard);
+
+function createNewCard(Name, Link, cardTemplate, popupCard) {
+  const cardItem = new Card(Name, Link, cardTemplate, popupCard);
   return cardItem.useCard();
 }
 
@@ -55,6 +57,7 @@ function saveNewItem(evt) {
 
 
 
+
 //открытие поп ап редактирования
 function openEditPopup(profileEditValidator) {
   popupName.value = profileName.textContent;
@@ -65,11 +68,12 @@ function openEditPopup(profileEditValidator) {
 
 
 //открытие поп ап добавления карточки
-function openAddCardPopup(itemAddValidator) {
+function openAddCardPopup(cardAddFormElementValidator) {
   cardAddFormElement.reset();
   openPopup(popupAdd);
-  itemAddValidator.clearFormInputError();
+  cardAddFormElementValidator.clearFormInputError();
 }
+
 
 
 //функция для сохранения значений в профиле редактирования
@@ -79,7 +83,6 @@ function submitProfileForm(evt) {
   profileCaption.textContent = popupCaption.value;
   closePopup(popupEd);
 }
-popupEd.addEventListener("submit", submitProfileForm);
 
 
 
@@ -90,13 +93,13 @@ const profileEditValidator = new FormValidator(commonObject, popupEd);
 profileEditValidator.enableValidation();
 
 
-const itemAddValidator = new FormValidator(commonObject, popupAdd);
-itemAddValidator.enableValidation();
+const cardAddFormElementValidator = new FormValidator(commonObject, popupAdd);
+cardAddFormElementValidator.enableValidation();
 
 
-popupEd.addEventListener('click', () => { openEditPopup(profileEditValidator); });
+popupEd.addEventListener('click', () => {openEditPopup(profileEditValidator); });
 
-popupAdd.addEventListener('click', () => { openAddCardPopup(itemAddValidator); });
+popupAdd.addEventListener('click', () => {openAddCardPopup(cardAddFormElementValidator);});
 
 popupEd.addEventListener('submit', submitProfileForm);
 popupAdd.addEventListener('submit', saveNewItem);
@@ -105,4 +108,12 @@ popupAdd.addEventListener('submit', saveNewItem);
 popupAdd.addEventListener('click', closePopupClickOnOverlay(popupAdd));
 popupEd.addEventListener('click', closePopupClickOnOverlay(popupEd));
 popupCard.addEventListener('click', closePopupClickOnOverlay(popupCard));
+
+buttonCloseCard.addEventListener("click", () => closePopup(popupCard));
+
+
+cardButton.addEventListener("click", openAddCardPopup);
+
+buttonEd.addEventListener("click", openEditPopup);
+
 

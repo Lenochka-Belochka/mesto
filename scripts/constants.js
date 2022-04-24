@@ -43,6 +43,7 @@ const profileName = document.querySelector(".profile__name");
 const profileCaption = document.querySelector(".profile__caption");
 const formProfileElement = document.querySelector('#profileForm');
 
+
 //Объявляем еременные для поп-ап редактирования блока карточек
 const cardButton = document.querySelector(".profile__button_fact_add");
 const popupAdd = document.querySelector(".popup_type_add");
@@ -60,6 +61,11 @@ const buttonCloseCard = document.querySelector(".popup__button_type_ex");
 const popupCardImage = popupCard.querySelector(".popup__image");
 const popupCardTitle = popupCard.querySelector(".popup__title");
 
+/** форма редактирования профиля */
+const profileEditForm = document.querySelector('.form-edit');
+
+/** форма добавления карточки */
+const itemAddForm = document.querySelector('.form-add');
 // DOM
 const popupName = popupEd.querySelector(".form__input_type_name");
 const popupCaption = popupEd.querySelector(".form__input_type_caption");

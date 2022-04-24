@@ -1,15 +1,15 @@
 import {openPopup} from './index.js';
 
 export class Card {
- constructor(text, image, templateSelector, popupElement){
+ constructor(text, image, templateSelector, popupEl){
     this._text = text;
     this._image = image;
     this._templateSelector = templateSelector;
-    this._popupElement = popupElement;
+    this._popupEl = popupEl;
 
 
-    this._imageEl = popupElem.querySelector('.popup__image');
-    this._titleEl = popupElem.querySelector('.popup__title');
+    this._imageEl = popupEl.querySelector('.popup__image');
+    this._titleEl = popupEl.querySelector('.popup__title');
  }
 
  _getTemplate() {
