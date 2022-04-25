@@ -1,4 +1,6 @@
 import {openPopup} from './index.js';
+import { popupCardImage } from './index.js';
+import { popupCardTitle } from './index.js';
 
 export class Card {
  constructor(text, image, templateSelector, popupEl){
@@ -31,11 +33,9 @@ export class Card {
 
   //открытие окна при клике на картинку
  _openPopupCard(cardData, popupEl) {
-    this._imageEl = popupCardImage;
-    this._titleEl = popupCardTitle;
-    this._imageEl.src = cardData.src;
-    this._imageEl.alt = cardData.name;
-    this._titleEl.textContent = cardData.name;
+    popupCardImage.src = cardData.src;
+    popupCardImage.alt = cardData.name;
+    popupCardTitle.textContent = cardData.name;
 
     openPopup(popupEl);
   }

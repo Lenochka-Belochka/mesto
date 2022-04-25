@@ -1,6 +1,9 @@
 import {Card} from './Card.js';
 import {FormValidator} from './FormValidator.js';
 
+export const popupCardImage = popupCard.querySelector(".popup__image");
+export const popupCardTitle = popupCard.querySelector(".popup__title");
+
 // функция открытия поп ап
 export function openPopup(popupEl) {
   popupEl.classList.add("popup_opened");
