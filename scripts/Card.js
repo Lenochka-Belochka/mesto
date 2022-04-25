@@ -6,10 +6,6 @@ export class Card {
     this._image = image;
     this._templateSelector = templateSelector;
     this._popupEl = popupEl;
-
-
-    this._imageEl = popupEl.querySelector('.popup__image');
-    this._titleEl = popupEl.querySelector('.popup__title');
  }
 
  _getTemplate() {
@@ -35,6 +31,8 @@ export class Card {
 
   //открытие окна при клике на картинку
  _openPopupCard(cardData, popupEl) {
+    this._imageEl = popupCardImage;
+    this._titleEl = popupCardTitle;
     this._imageEl.src = cardData.src;
     this._imageEl.alt = cardData.name;
     this._titleEl.textContent = cardData.name;
