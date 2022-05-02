@@ -7,14 +7,14 @@
       name="Description"
       content="Автор: Елена Кочерягина, Проектная работа 3: Mesto, Сайт создан в рамках учебы в Яндекс Практикум (курс: Веб-разработка)"
     />
-    <link rel="stylesheet" type="text/css" href="./pages/index.css" />
+  <!--  <link rel="stylesheet" type="text/css" href="./pages/index.css" /> -->
     <title>Mesto</title>
   </head>
   <body class="page">
     <header class="header">
       <img
         class="header__logo"
-        src="./images/header/logo.svg"
+        src="<%=require('./images/header/logo.svg')%>"
         alt="Логотип сайта"
       />
     </header>
@@ -23,7 +23,7 @@
         <div class="profile__avatar">
           <img
             class="profile__image"
-            src="./images/profile/Avatar.png"
+            src="<%=require('./images/profile/Avatar.png')%>" 
             alt="Аватар"
           />
         </div>
@@ -95,7 +95,7 @@
     <section class="popup popup_type_add">
       <div class="popup__frame">
         <button
-          class="popup__button popup__button_type_exit"
+          class="popup__button popup__button_type_close"
           type="reset"
           aria-label="закрыть"
         ></button>
@@ -135,7 +135,7 @@
     <section class="popup popup_type_card">
       <div class="popup__container">
         <button
-          class="popup__button popup__button_type_ex"
+          class="popup__button popup__button_type_close"
           type="reset"
           aria-label="закрыть"
         ></button>
@@ -163,8 +163,8 @@
       </li>
     </template>
 
-    <script  src="./scripts/constants.js"></script>
-    <script type="module" src="./scripts/index.js"></script>
+    <!--  <script  src="./scripts/constants.js"></script>
+    <script type="module" src="./pages/index.js"></script> -->
 
   </body>
 </html>

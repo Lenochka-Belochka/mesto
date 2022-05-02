@@ -1,13 +1,10 @@
-import {openPopup} from './index.js';
-import { popupCardImage } from './index.js';
-import { popupCardTitle } from './index.js';
-
 export class Card {
- constructor(text, image, templateSelector, popupEl){
+ constructor(text, image, templateSelector, popupEl, handleCardClick){
     this._text = text;
     this._image = image;
     this._templateSelector = templateSelector;
     this._popupEl = popupEl;
+    this._handleCardClick = handleCardClick;
  }
 
  _getTemplate() {
@@ -29,16 +26,9 @@ export class Card {
   //удаление
   _deleteCard(evt) {
     this._element.remove();
+    this._element = null;
   }
 
-  //открытие окна при клике на картинку
- _openPopupCard(cardData, popupEl) {
-    popupCardImage.src = cardData.src;
-    popupCardImage.alt = cardData.name;
-    popupCardTitle.textContent = cardData.name;
-
-    openPopup(popupEl);
-  }
 
  
   
@@ -53,9 +43,7 @@ export class Card {
     })
 
     // клик на картинку
-    this._element.querySelector('.photo-grid__image').addEventListener('click', () => {
-      this._openPopupCard({src: this._image, name: this._text}, this._popupEl);
-    })
+    this._element.querySelector('.photo-grid__image').addEventListener('click', this._handleCardClick);
 
   }
 
