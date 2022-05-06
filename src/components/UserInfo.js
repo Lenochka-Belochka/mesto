@@ -16,9 +16,9 @@ export class UserInfo {
   getUserInfo() {
     const userData = {
       userName: this._userName.textContent,
-      userJob: this._userJob.textContent
-    }
-    return userData
+      userJob: this._userJob.textContent,
+    };
+    return userData;
   }
 
   // принимает новые данные пользователя и добавляет их на страницу
@@ -27,5 +27,4 @@ export class UserInfo {
     this._userName.textContent = name;
     this._userJob.textContent = about;
   }
-
 }
