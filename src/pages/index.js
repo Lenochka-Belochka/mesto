@@ -29,7 +29,7 @@ function openEditPopup(profileEditValidator) {
 // создаем экземпляр класса PopupWithForm для добавления карточки
 const addItemFormPopup = new PopupWithForm(".popup_type_add", {
   handleSubmit: (formData) => {
-    cardsList.addItem(createCard(formData))
+    cardsList.addItem(createCard(formData));
     addItemFormPopup.close();
   },
 });
@@ -79,24 +79,23 @@ const imagePopup = new PopupWithImage(".popup_type_card");
 imagePopup.setEventListeners();
 
 const createCard = (data) => {
-const card = new Card(
-  {
-    data,
-    handleCardClick: () => {
-    imagePopup.open(data.name, data.link);
+  const card = new Card(
+    {
+      data,
+      handleCardClick: () => {
+        imagePopup.open(data.name, data.link);
+      },
     },
-  },
-  "#grid-template"
-);
-return card.getCard()
-}
-
+    "#grid-template"
+  );
+  return card.getCard();
+};
 
 const cardsList = new Section(
   {
     items: initialCards,
     renderer: (initialCards) => {
-      cardsList.addItem(createCard(initialCards))
+      cardsList.addItem(createCard(initialCards));
     },
   },
   ".photo-grid__list"
