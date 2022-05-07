@@ -8,7 +8,7 @@ export class Card {
   _getTemplate() {
     const cardElement = document
       .querySelector(this.selector)
-      .content.querySelector(".photo-grid__item")
+      .content.querySelector(".element")
       .cloneNode(true);
 
     return cardElement;
@@ -16,7 +16,7 @@ export class Card {
 
   //лайк
   _addLikeOnPhoto(evt) {
-    evt.target.classList.toggle("photo-grid__button_active");
+    evt.target.classList.toggle("element__button_active");
   }
 
   //удаление
@@ -28,13 +28,13 @@ export class Card {
   _setEventListeners() {
     //лайк
     this._element
-      .querySelector(".photo-grid__button")
+      .querySelector(".element__button")
       .addEventListener("click", (evt) => {
         this._addLikeOnPhoto(evt);
       });
     //удаление
     this._element
-      .querySelector(".photo-grid__button_delete")
+      .querySelector(".element__button_delete")
       .addEventListener("click", (evt) => {
         this._deleteCard(evt);
       });
@@ -48,11 +48,11 @@ export class Card {
   getCard() {
     this._element = this._getTemplate();
 
-    this._pictureElement = this._element.querySelector(".photo-grid__image");
+    this._pictureElement = this._element.querySelector(".element__image");
 
     this._pictureElement.src = this.data.link;
     this._pictureElement.alt = this.data.name;
-    this._element.querySelector(".photo-grid__item-title").textContent =
+    this._element.querySelector(".element__item-title").textContent =
       this.data.name;
 
     this._setEventListeners();

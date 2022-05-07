@@ -29,7 +29,7 @@ function openEditPopup(profileEditValidator) {
 // создаем экземпляр класса PopupWithForm для добавления карточки
 const addItemFormPopup = new PopupWithForm(".popup_type_add", {
   handleSubmit: (formData) => {
-    cardsList.addItem(formData);
+    cardsList.addItem(createCard(formData))
     addItemFormPopup.close();
   },
 });
@@ -41,19 +41,17 @@ function openAddCardPopup(cardAddFormElementValidator) {
 }
 
 const userInfo = new UserInfo({
-  nameSelector: '.profile__name',
-  jobSelector: '.profile__caption'
-})
+  nameSelector: ".profile__name",
+  jobSelector: ".profile__caption",
+});
 
 // создаем экземпляр класса PopupWithForm для редактирования профиля
-const profileFormPopup = new PopupWithForm(
-  ".popup_type_edit",
-  {handleSubmit: (formData) => {
+const profileFormPopup = new PopupWithForm(".popup_type_edit", {
+  handleSubmit: (formData) => {
     userInfo.setUserInfo(formData);
-    console.log(formData);
-    profileFormPopup.close();}
-  }
-);
+    profileFormPopup.close();
+  },
+});
 // устанавливаем слушатели
 profileFormPopup.setEventListeners();
 
@@ -77,23 +75,28 @@ cardButton.addEventListener("click", () => {
   openAddCardPopup(cardAddFormElementValidator);
 });
 
+const imagePopup = new PopupWithImage(".popup_type_card");
+imagePopup.setEventListeners();
+
+const createCard = (data) => {
+const card = new Card(
+  {
+    data,
+    handleCardClick: () => {
+    imagePopup.open(data.name, data.link);
+    },
+  },
+  "#grid-template"
+);
+return card.getCard()
+}
+
+
 const cardsList = new Section(
   {
     items: initialCards,
-    renderer: (item) => {
-      const card = new Card(
-        {
-          data: item,
-          handleCardClick: () => {
-            const imagePopup = new PopupWithImage(".popup_type_card");
-            imagePopup.setEventListeners();
-            imagePopup.open(item.name, item.link);
-          },
-        },
-        "#grid-template"
-      );
-      const newCardFromTemplate = card.getCard();
-      return newCardFromTemplate;
+    renderer: (initialCards) => {
+      cardsList.addItem(createCard(initialCards))
     },
   },
   ".photo-grid__list"

@@ -1,14 +1,7 @@
-//import { profileName } from "../utils/constants.js";
-//import { profileCaption } from "../utils/constants.js";
-
-// Класс UserInfo - управление отображением информации о пользователе на странице
-
 export class UserInfo {
   constructor({ nameSelector, jobSelector }) {
-    this._nameSelector = nameSelector;
-    this._jobSelector = jobSelector;
-    this._userName = document.querySelector(this._nameSelector);
-    this._userJob = document.querySelector(this._jobSelector);
+    this._userName = document.querySelector(nameSelector); 
+    this._userJob = document.querySelector(jobSelector); 
   }
 
   // Возврат объект с данными пользователя

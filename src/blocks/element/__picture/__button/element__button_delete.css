@@ -1,4 +1,4 @@
-.photo-grid__button_delete {
+.element__button_delete {
   width: 18px;
   height: 19px;
   margin: 20px 20px 243px 244px;
@@ -11,6 +11,6 @@
   position: absolute;
   transition: opacity 0.3s ease;
 }
-.photo-grid__button_delete:hover {
+.element__button_delete:hover {
   opacity: 0.3;
 }

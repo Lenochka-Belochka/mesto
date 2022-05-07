@@ -1,4 +1,4 @@
-.photo-grid__image {
+.element__image {
   position: relative;
   width: 282px;
   height: 282px;
@@ -10,6 +10,6 @@
   color: #000;
 }
 
-.photo-grid__image:hover { 
+.element__image:hover { 
     opacity: 0.3; 
   } 

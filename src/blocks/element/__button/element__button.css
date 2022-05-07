@@ -1,4 +1,4 @@
-.photo-grid__button {
+.element__button {
   width: 22px;
   height: 19px;
   box-sizing: border-box;
@@ -12,6 +12,6 @@
   transition: opacity 0.3s ease;
 }
 
-.photo-grid__button:hover {
+.element__button:hover {
   opacity: 0.3;
 }
