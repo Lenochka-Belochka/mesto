@@ -7,7 +7,6 @@ export class UserInfo {
     this._subtitleElem = subtitle;
   }
 
-  // Возврат объект с данными пользователя
 
   getUserInfo() {
     const userData = {
@@ -18,7 +17,6 @@ export class UserInfo {
     return userData;
   }
 
-  // принимает новые данные пользователя и добавляет их на страницу
 
   setUserInfo({ name, about, avatar, _id }) {
     this._userName = name;

@@ -52,7 +52,7 @@ function openAddCardPopup(cardAddFormElementValidator) {
 // создаем профиль пользователя
 const userInfo = new UserInfo('.profile__image', profileName, profileCaption);
 
-// Создаем popup для отображения карточки:
+// cоздаем popup для отображения карточки:
 const imagePopup = new PopupWithImage(".popup_type_card");
 imagePopup.setEventListeners();
 
@@ -68,7 +68,6 @@ const profileFormPopup = new PopupWithForm(".popup_type_edit",
       console.log(`Ошибка при сохранении данных профиля: ${err}!`)
     });
 });
-// устанавливаем слушатели
 profileFormPopup.setEventListeners();
 
 
@@ -85,7 +84,6 @@ const addItemFormPopup = new PopupWithForm(".popup_type_add",
     console.log(`Ошибка при сохранении карточки: ${err}!`)
   });
 });
-// устанавливаем слушатели
 addItemFormPopup.setEventListeners();
 
 
@@ -103,25 +101,21 @@ const confirmFormPopup = new PopupWithConfirmation('.popup_type_confirm',
       });
     }
 );
-// устанавливаем слушатели
 confirmFormPopup.setEventListeners();
 
-// создаем экземпляр класса PopupWithForm для редактирования аватара пользователя
+// создаем экземпляр класса PopupWithForm для редактирования аватара 
 const editAvatarFormPopup = new PopupWithForm('.popup_type_update-avatar',
   (newAvatar) => {
     // вначале отправим данные на сервер:
     return api.updateAvatar(newAvatar)
     .then((result) => {
-      // создаем и добавляем карточку в DOM!
       userInfo.setUserInfo(result);
     })
-    // если поймали ошибку
     .catch((err) => {
       console.log(`Ошибка при сохранении аватара: ${err}!`)
     });
 }
 );
-// устанавливаем слушатели
 editAvatarFormPopup.setEventListeners();
 
 
@@ -142,14 +136,14 @@ cardAddFormElementValidator.enableValidation();
 
 
 
-// назначаем событие - нажали на кнопку "Обновить аватар"
+// "Обновить аватар"
 avatarEditButton.addEventListener('click', () => { showEditAvatarForm(avatarEditFormValidator); });
 
 buttonEd.addEventListener("click", () => {
   openEditPopup(profileEditValidator);
 });
 
-// назначаем событие - нажали на кнопку "Добавить карточку"
+// "Добавить карточку"
 cardButton.addEventListener("click", () => {
   openAddCardPopup(cardAddFormElementValidator);
 });
@@ -159,20 +153,17 @@ cardButton.addEventListener("click", () => {
 const cardsList = new Section(
   {
     renderer: ({_id: newId, name: newName, link: newLink, likes: newLikes, owner: {_id: ownerId}}) => {
-      // здесь решаем: будет ли корзина на карточке или нет
       const userId = userInfo.getUserInfo().user_id;
       let isTrash = false;
       if (ownerId === userId)
         isTrash = true;
         const card = new Card(isTrash, userId, ownerId, newId, newName, newLink, newLikes, "#grid-template", imagePopup,
         ({cardElem, cardId}) => {
-          // передаем данные карточки, на которой нажали кнопку удалить
           confirmFormPopup.setCardData(cardElem, cardId);
           confirmFormPopup.open();
         },
         // Функция-обработчик лайк-дислайка карточки
         (cardId) => {
-          // если карточку уже лайкали
           if(card.isLike()) {
             api.deleteLike(cardId)
               .then((result) => {
@@ -195,19 +186,15 @@ const cardsList = new Section(
         }
       }
     );
-    // готовим и возращаем карточку для размещения в DOM
     return card.getCard();
   } 
  }, ".photo-grid__list");
 
-// запускаем несколько промисов параллельно: для загрузки профиля и начальных карточек
 const promiseUser = api.getUserProfile();
 const promiseCards = api.getInitialCards();
 
 Promise.all([promiseUser, promiseCards])
-  // обрабатываем полученные данные
   .then (([userElem, cards]) => {
-    // профиль пользователя сохраняем
     userInfo.setUserInfo(userElem);
     cardsList.setCardItems(cards);
     cardsList.renderItems();

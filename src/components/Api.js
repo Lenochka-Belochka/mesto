@@ -9,7 +9,22 @@ export class Api {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Ошибка выполнении запроса к серверу: ${res.status}`);
+    return Promise.reject(`Ошибка выполнении запроса: ${res.status}`);
+  }
+
+  
+  // Публичный метод для загрузки пользовательского профиля
+
+  getUserProfile() {
+    const request = this._baseUrl + "/users/me";
+    return fetch(request, {
+      method: "GET",
+      headers: this._headers,
+    })
+      .then((res) => this._checkResponse(res))
+      .catch((err) => {
+        console.log(`Ошибка при выполнении запроса: ${err}!`);
+      });
   }
 
   //Публичный метод для загрузки карточек
@@ -23,21 +38,7 @@ export class Api {
     })
       .then((res) => this._checkResponse(res))
       .catch((err) => {
-        console.log(`Ошибка при выполнении запросе: ${err}!`);
-      });
-  }
-
-  // Публичный метод для загрузки пользовательского профиля
-
-  getUserProfile() {
-    const request = this._baseUrl + "/users/me";
-    return fetch(request, {
-      method: "GET",
-      headers: this._headers,
-    })
-      .then((res) => this._checkResponse(res))
-      .catch((err) => {
-        console.log(`Ошибка при выполнении запросе: ${err}!`);
+        console.log(`Ошибка при выполнении запроса: ${err}!`);
       });
   }
 
@@ -50,7 +51,7 @@ export class Api {
     })
       .then((res) => this._checkResponse(res))
       .catch((err) => {
-        console.log(`Ошибка при выполнении запросе: ${err}!`);
+        console.log(`Ошибка при выполнении запроса: ${err}!`);
       });
   }
 
@@ -70,11 +71,11 @@ export class Api {
     })
       .then((res) => this._checkResponse(res))
       .catch((err) => {
-        console.log(`Ошибка при выполнении запросе: ${err}!`);
+        console.log(`Ошибка при выполнении запроса: ${err}!`);
       });
   }
 
-  //Метод для сохранения данных профиля пользователя
+  //Метод для сохранения данных профиля 
 
   saveNewProfile(profileData) {
     const request = this._baseUrl + "/users/me";
@@ -91,11 +92,11 @@ export class Api {
     })
       .then((res) => this._checkResponse(res))
       .catch((err) => {
-        console.log(`Ошибка при выполнении запросе: ${err}!`);
+        console.log(`Ошибка при выполнении запроса: ${err}!`);
       });
   }
 
-  // Метод для Обновления автара в профиле пользователя
+  // Метод для обновления автара 
   updateAvatar(newAvatar) {
     const request = this._baseUrl + "/users/me/avatar";
     const newHeaders = this._headers;
@@ -109,20 +110,7 @@ export class Api {
     })
       .then((res) => this._checkResponse(res))
       .catch((err) => {
-        console.log(`Ошибка при выполнении запросе: ${err}!`);
-      });
-  }
-
-  // Метод для удаления лайка карточки
-  deleteLike(cardId) {
-    const request = this._baseUrl + `/cards/${cardId}/likes`;
-    return fetch(request, {
-      method: "DELETE",
-      headers: this._headers,
-    })
-      .then((res) => this._checkResponse(res))
-      .catch((err) => {
-        console.log(`Ошибка при выполнении запросе: ${err}!`);
+        console.log(`Ошибка при выполнении запроса: ${err}!`);
       });
   }
 
@@ -135,7 +123,20 @@ export class Api {
     })
       .then((res) => this._checkResponse(res))
       .catch((err) => {
-        console.log(`Ошибка при выполнении запросе: ${err}!`);
+        console.log(`Ошибка при выполнении запроса: ${err}!`);
+      });
+  }
+
+  // Метод для удаления лайка 
+  deleteLike(cardId) {
+    const request = this._baseUrl + `/cards/${cardId}/likes`;
+    return fetch(request, {
+      method: "DELETE",
+      headers: this._headers,
+    })
+      .then((res) => this._checkResponse(res))
+      .catch((err) => {
+        console.log(`Ошибка при выполнении запроса: ${err}!`);
       });
   }
 }

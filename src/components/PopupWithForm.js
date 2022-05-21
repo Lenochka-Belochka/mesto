@@ -13,7 +13,6 @@ export class PopupWithForm extends Popup {
     this._submitButtonText = this._submitButton.textContent;
   }
 
-  // данные всех полей формы
 
   _getInputValues() {
     this._formValues = {};
@@ -26,17 +25,14 @@ export class PopupWithForm extends Popup {
 
   setInputValues(data) {
     this._inputList.forEach((input) => {
-      // тут вставляем в `value` инпута данные из объекта по атрибуту `name` этого инпута
       input.value = data[input.name];
     });
   }
 
-  // Обработчик клика иконке закрытия и обработчик сабмита формы
   setEventListeners(){
     this._popup.addEventListener("submit", (evt) => {
       evt.preventDefault();
 
-    // меняем текст кнопки submit
     this.renderLoading(true);
 
       this._handleSubmit(this._getInputValues())
@@ -48,7 +44,6 @@ export class PopupWithForm extends Popup {
     super.setEventListeners();
   }
 
-  // Перезаписывает родительский метод close + сброс
 
   close() {
     this._form.reset();

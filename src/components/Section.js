@@ -1,6 +1,6 @@
 export class Section {
   constructor({ renderer }, containerSelector) {
-    this._renderer = renderer; // Свойство = функция, которая отвечает за создание и отрисовку данных на странице
+    this._renderer = renderer; 
     this._container = document.querySelector(containerSelector);
   }
 

@@ -23,17 +23,14 @@ export class Card {
     this._handleCardLike = handleCardLike;
 
     this._isTrash = isTrash;
-    this._id = id; // id карточки
-    this._userId = userId; // id пользователя из профиля
-    this._ownerId = ownerId; //id пользователя, который добавил карточку
+    this._id = id; 
+    this._userId = userId; 
+    this._ownerId = ownerId; 
 
     this._element = this._getTemplate();
     this._likeButton = this._element.querySelector(".element__button");
-    // кнопка удалить
     this._trashButton = this._element.querySelector(".element__button_delete");
-    // изображение карточки
     this._cardImage = this._element.querySelector(".element__image");
-    // элемент, содержащий количество лайков
     this._likeNumberElem = this._element.querySelector(
       ".element__likes-number"
     );
@@ -48,18 +45,15 @@ export class Card {
     return cardElement;
   }
 
-  // обработчик клика на  Like
   _likeCard(evt) {
     this._handleCardLike(this._id);
   }
 
-  // обновляет кол-вл лайков
   updateLike(numLikes) {
     this._likeNumberElem.textContent = numLikes;
     this._likeButton.classList.toggle("element__button_active");
   }
 
-  //нажат ли лайк
   isLike() {
     if (this._likeButton.classList.contains("element__button_active")){
       return true;    
@@ -68,16 +62,13 @@ export class Card {
   }
 
   _deleteCard(evt) {
-    // передаем данные элемента на обработку
     this._handleCardDelete({ cardElem: this._element, cardId: this._id });
   }
 
   _handleCardClick(evt) {
-    // передаем в popup данные поднимаемой карточки
     this._popupElem.open(this._text, this._image);
   }
 
-  //удаление
   _deleteCard(evt) {
     this._element.remove();
     this._element = null;
@@ -110,7 +101,6 @@ export class Card {
     return this._element;
   }
 
-  //проверка наличия в массиве объекта с заданным свойством _id
   _checkId(arr, targerId) {
     for (let index = 0; index < arr.length; ++index) {
       if (arr[index]._id === targerId) return true;
@@ -118,12 +108,10 @@ export class Card {
     return false;
   }
 
-  //возврат id карточки
   getCardId() {
     return this._id;
   }
 
-  // возврат элемента карточки
   getCardElem() {
     return this._element;
   }
