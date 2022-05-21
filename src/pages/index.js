@@ -79,7 +79,6 @@ const addItemFormPopup = new PopupWithForm(".popup_type_add",
   .then((result) => {
     cardsList.addItem(result);
   })
-  // если поймали ошибку
   .catch((err) => {
     console.log(`Ошибка при сохранении карточки: ${err}!`)
   });
@@ -106,7 +105,6 @@ confirmFormPopup.setEventListeners();
 // создаем экземпляр класса PopupWithForm для редактирования аватара 
 const editAvatarFormPopup = new PopupWithForm('.popup_type_update-avatar',
   (newAvatar) => {
-    // вначале отправим данные на сервер:
     return api.updateAvatar(newAvatar)
     .then((result) => {
       userInfo.setUserInfo(result);
@@ -162,7 +160,6 @@ const cardsList = new Section(
           confirmFormPopup.setCardData(cardElem, cardId);
           confirmFormPopup.open();
         },
-        // Функция-обработчик лайк-дислайка карточки
         (cardId) => {
           if(card.isLike()) {
             api.deleteLike(cardId)
