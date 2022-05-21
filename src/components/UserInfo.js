@@ -1,23 +1,34 @@
 export class UserInfo {
-  constructor({ nameSelector, jobSelector }) {
-    this._userName = document.querySelector(nameSelector);
-    this._userJob = document.querySelector(jobSelector);
+  constructor(avatarSelector, title, subtitle) {
+    this._userName = 'no name';
+    this._userAboutSelf = 'no about';
+    this._avatarElem = document.querySelector(avatarSelector);
+    this._titleElem  = title;
+    this._subtitleElem = subtitle;
   }
 
   // Возврат объект с данными пользователя
 
   getUserInfo() {
     const userData = {
-      userName: this._userName.textContent,
-      userJob: this._userJob.textContent,
+      user_name: this._userName,
+      user_id: this._userId,
+      about_self: this._userAboutSelf,
     };
     return userData;
   }
 
   // принимает новые данные пользователя и добавляет их на страницу
 
-  setUserInfo({ name, about }) {
-    this._userName.textContent = name;
-    this._userJob.textContent = about;
+  setUserInfo({ name, about, avatar, _id }) {
+    this._userName = name;
+    this._userAboutSelf = about;
+    this._avatar = avatar;
+    this._userId = _id;
+
+    this._titleElem.textContent = this._userName;
+    this._subtitleElem.textContent = this._userAboutSelf;
+    this._avatarElem.src = this._avatar;
   }
 }
+

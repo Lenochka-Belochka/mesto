@@ -1,15 +1,21 @@
 export class Section {
-  constructor({ items, renderer }, containerSelector) {
-    this._items = items; //свойство = массив данных, которые нужно добавить на страницу при инициализации класса
+  constructor({ renderer }, containerSelector) {
     this._renderer = renderer; // Свойство = функция, которая отвечает за создание и отрисовку данных на странице
     this._container = document.querySelector(containerSelector);
   }
 
-  addItem(element) {
-    this._container.prepend(element);
+  addItem(item) {
+    const card = this._renderer(item);
+    this._container.prepend(card);
   }
 
+  setCardItems(arr) {
+    this._renderedItems = Array.from(arr);
+   }
   renderItems() {
-    this._items.forEach((item) => this._renderer(item));
+    this._renderedItems.forEach(item => this.addItem(item));
+ }
   }
-}
+
+
+

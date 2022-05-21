@@ -2,6 +2,8 @@
   padding: 0;
   margin: 0;
   margin-right: 30px;
+  object-fit: cover;
+  background: none;
 }
 
 @media screen and (max-width: 799px) {

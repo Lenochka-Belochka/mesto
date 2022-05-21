@@ -20,20 +20,26 @@
     <main class="content">
       <section class="profile">
         <div class="profile__avatar">
+          <button
+           class="profile__edit-avatar-button"
+           type="button"
+           aria-label="edit button"
+         >
           <img
             class="profile__image"
             src="<%=require('./images/profile/Avatar.png')%>"
             alt="Аватар"
           />
+          </button>
         </div>
         <div class="profile__description">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <h1 class="profile__name"></h1>
           <button
             class="profile__button profile__button_fact_edit"
             type="button"
             title="Редактировать профиль"
           ></button>
-          <p class="profile__caption">Исследователь океана</p>
+          <p class="profile__caption"></p>
         </div>
         <button
           class="profile__button profile__button_fact_add"
@@ -147,6 +153,57 @@
       </div>
     </section>
 
+<!-- popup подтверждения -->
+<div class="popup popup_type_confirm">
+  <!-- Форма подтверждения удаления карточки -->
+  <div class="popup__frame">
+    <form
+      name="confirm-delete"
+      class="form form-delete"
+    >
+      <h2 class="form__title">Вы уверены?</h2>
+      <button class="popup__button_type_save" type="submit">Да</button>
+    </form>
+    <button
+    class="popup__button popup__button_type_close"
+    type="reset"
+    aria-label="закрыть"
+  ></button>
+  </div>
+</div>
+
+    <!-- popup -->
+    <section class="popup popup_type_update-avatar">
+      <!-- Форма обновления аватара -->
+      <div class="popup__frame">
+        <button
+          class="popup__button popup__button_type_close"
+          type="reset"
+          aria-label="закрыть"
+        ></button>
+        <form
+          name="update-avatar"
+          class="form form-update"
+        >
+          <h2 class="form__title">Обновить аватар</h2>
+          <fieldset class="form__fieldset">
+              <input
+                id="avatar-link-input"
+                class="form__input form__input_field_link"
+                value=""
+                name="link"
+                placeholder="Сcылка на аватар"
+                type="url"
+                required
+              />
+              <span class="popup__error avatar-link-input-error"></span>
+          </fieldset>
+          <button type="submit" class="popup__button popup__button_type_save">Сохранить</button>
+        </form>
+      </div>
+    </section>
+
+
     <template id="grid-template">
       <li class="element">
         <div class="element__picture">
@@ -157,6 +214,7 @@
           <h2 class="element__item-title"></h2>
           <div class="element__like-group">
             <button class="element__button" title="Нравится"></button>
+            <p class="element__likes-number">0</p>
           </div>
         </div>
       </li>

@@ -34,10 +34,11 @@ export const commonObject = {
   errorClass: "popup__error_active",
 };
 
-export const userInfoSettings = {
-  user_name: "Жак-Ив-Кусто",
-  about_self: "Исследователь океана",
-};
+
+
+
+export const avatarEditForm = document.querySelector('.popup_type_update-avatar');
+export const avatarEditButton = document.querySelector('.profile__edit-avatar-button');
 
 //Объявляем переменные для поп-ап редактирования блока профиля
 export const buttonEd = document.querySelector(".profile__button_fact_edit");
