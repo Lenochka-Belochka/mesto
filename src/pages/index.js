@@ -160,8 +160,8 @@ const cardsList = new Section(
       }
         const card = new Card(isTrash, userId, ownerId, newId, newName, newLink, newLikes, "#grid-template", imagePopup,
         ({cardElem, cardId}) => {
-          confirmFormPopup.open();
           confirmFormPopup.setCardData(cardElem, cardId);
+          confirmFormPopup.open();
         },
 
         (cardId) => {
