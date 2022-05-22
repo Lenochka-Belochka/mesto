@@ -39,6 +39,9 @@ export const commonObject = {
 
 export const avatarEditForm = document.querySelector('.popup_type_update-avatar');
 export const avatarEditButton = document.querySelector('.profile__edit-avatar-button');
+export const cardDeleteButton = document.querySelector('.element__button_delete');
+
+
 
 //Объявляем переменные для поп-ап редактирования блока профиля
 export const buttonEd = document.querySelector(".profile__button_fact_edit");

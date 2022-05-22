@@ -69,10 +69,7 @@ export class Card {
     this._popupElem.open(this._text, this._image);
   }
 
-  _deleteCard(evt) {
-    this._element.remove();
-    this._element = null;
-  }
+ 
 
   _setEventListeners() {
     this._likeButton.addEventListener("click", (evt) => {

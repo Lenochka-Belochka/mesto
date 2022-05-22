@@ -9,16 +9,18 @@ import { profileName } from "../utils/constants.js";
 import { profileCaption } from "../utils/constants.js";
 import { avatarEditForm } from "../utils/constants.js";
 import { avatarEditButton } from "../utils/constants.js";
+import { cardDeleteButton } from "../utils/constants.js";
 
 
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
-import { PopupWithConfirmation } from "../components/PopupWithConfirmation";
+import { PopupWithConfirmation } from "../components/PopupWithConfirmation.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import {Api} from "../components/Api.js";
+
 
 
 // создаем класс для взаимодействия с сервером Mesto
@@ -88,7 +90,7 @@ addItemFormPopup.setEventListeners();
 
 
 // создаем экземпляр класса PopupWithForm для подтверждения удаления карточки
-const confirmFormPopup = new PopupWithConfirmation('.popup_type_confirm',
+const confirmFormPopup = new PopupWithConfirmation('.popup_type_confirm', 
   () => {
       api.deleteCard(confirmFormPopup.getCardId())
       .then((result) => {
@@ -153,13 +155,15 @@ const cardsList = new Section(
     renderer: ({_id: newId, name: newName, link: newLink, likes: newLikes, owner: {_id: ownerId}}) => {
       const userId = userInfo.getUserInfo().user_id;
       let isTrash = false;
-      if (ownerId === userId)
+      if (ownerId === userId) {
         isTrash = true;
+      }
         const card = new Card(isTrash, userId, ownerId, newId, newName, newLink, newLikes, "#grid-template", imagePopup,
         ({cardElem, cardId}) => {
-          confirmFormPopup.setCardData(cardElem, cardId);
           confirmFormPopup.open();
+          confirmFormPopup.setCardData(cardElem, cardId);
         },
+
         (cardId) => {
           if(card.isLike()) {
             api.deleteLike(cardId)
