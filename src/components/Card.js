@@ -65,6 +65,10 @@ export class Card {
     this._handleCardDelete({ cardElem: this._element, cardId: this._id });
   }
 
+  removeCard() {
+    this._element.remove();
+    this._element = null;
+  }
   _handleCardClick(evt) {
     this._popupElem.open(this._text, this._image);
   }

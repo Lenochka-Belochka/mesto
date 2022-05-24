@@ -90,19 +90,7 @@ addItemFormPopup.setEventListeners();
 
 
 // создаем экземпляр класса PopupWithForm для подтверждения удаления карточки
-const confirmFormPopup = new PopupWithConfirmation('.popup_type_confirm', 
-  () => {
-      api.deleteCard(confirmFormPopup.getCardId())
-      .then((result) => {
-        confirmFormPopup.deleteCard();
-        confirmFormPopup.close();
-      })
-      .catch((err) => {
-        console.log(`Ошибка при обработке запросе удаления карточки : ${err}!`);
-      });
-    }
-);
-confirmFormPopup.setEventListeners();
+
 
 // создаем экземпляр класса PopupWithForm для редактирования аватара 
 const editAvatarFormPopup = new PopupWithForm('.popup_type_update-avatar',
@@ -160,10 +148,24 @@ const cardsList = new Section(
       }
         const card = new Card(isTrash, userId, ownerId, newId, newName, newLink, newLikes, "#grid-template", imagePopup,
         ({cardElem, cardId}) => {
-          confirmFormPopup.setCardData(cardElem, cardId);
+          const confirmFormPopup = new PopupWithConfirmation('.popup_type_confirm', 
+          () => {
+            api.deleteCard(confirmFormPopup.getCardId())
+            .then((result) => {
+              confirmFormPopup.close();
+              card.removeCard()
+            })
+            .catch((err) => {
+              console.log(`Ошибка при обработке запросе удаления карточки : ${err}!`);
+            });
+          }
+          );
+          confirmFormPopup.setEventListeners();
+          
           confirmFormPopup.open();
+          confirmFormPopup.setCardData(cardElem, cardId);
+          
         },
-
         (cardId) => {
           if(card.isLike()) {
             api.deleteLike(cardId)
@@ -197,7 +199,7 @@ const promiseCards = api.getInitialCards();
 Promise.all([promiseUser, promiseCards])
   .then (([userElem, cards]) => {
     userInfo.setUserInfo(userElem);
-    cardsList.setCardItems(cards);
+    cardsList.setCardItems(cards.reverse());
     cardsList.renderItems();
   })
   .catch((err) => {

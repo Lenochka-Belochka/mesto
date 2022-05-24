@@ -7,6 +7,12 @@ export class FormValidator {
     this._inputErrorClass = settings.inputErrorClass;
     this._errorClass = settings.errorClass;
     this._formEl = formEl;
+    this._inputList = Array.from(
+      this._formEl.querySelectorAll(this._inputSelector)
+    );
+    this._buttonElement = this._formEl.querySelector(
+      this._submitButtonSelector
+    );
   }
 
   _hasInvalidInput() {
@@ -70,12 +76,6 @@ export class FormValidator {
   }
 
   enableValidation() {
-    this._inputList = Array.from(
-      this._formEl.querySelectorAll(this._inputSelector)
-    );
-    this._buttonElement = this._formEl.querySelector(
-      this._submitButtonSelector
-    );
     this._setEventListeners();
   }
 }

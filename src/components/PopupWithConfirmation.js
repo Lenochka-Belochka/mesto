@@ -22,10 +22,6 @@ export class PopupWithConfirmation extends Popup {
  }
 
 
-  deleteCard() {
-    this._cardElem.remove();
-    this._cardElem = null;
-  }
 
 
   setCardData(cardElem, cardId) {

@@ -22,9 +22,6 @@ export class Api {
       headers: this._headers,
     })
       .then((res) => this._checkResponse(res))
-      .catch((err) => {
-        console.log(`Ошибка при выполнении запроса: ${err}!`);
-      });
   }
 
   //Публичный метод для загрузки карточек
@@ -37,9 +34,6 @@ export class Api {
       headers: this._headers,
     })
       .then((res) => this._checkResponse(res))
-      .catch((err) => {
-        console.log(`Ошибка при выполнении запроса: ${err}!`);
-      });
   }
 
   // Метод для удаления карточки
@@ -50,9 +44,6 @@ export class Api {
       headers: this._headers,
     })
       .then((res) => this._checkResponse(res))
-      .catch((err) => {
-        console.log(`Ошибка при выполнении запроса: ${err}!`);
-      });
   }
 
   // Метод для добавления карточки
@@ -70,9 +61,6 @@ export class Api {
       }),
     })
       .then((res) => this._checkResponse(res))
-      .catch((err) => {
-        console.log(`Ошибка при выполнении запроса: ${err}!`);
-      });
   }
 
   //Метод для сохранения данных профиля 
@@ -91,9 +79,6 @@ export class Api {
       }),
     })
       .then((res) => this._checkResponse(res))
-      .catch((err) => {
-        console.log(`Ошибка при выполнении запроса: ${err}!`);
-      });
   }
 
   // Метод для обновления автара 
@@ -109,9 +94,6 @@ export class Api {
       }),
     })
       .then((res) => this._checkResponse(res))
-      .catch((err) => {
-        console.log(`Ошибка при выполнении запроса: ${err}!`);
-      });
   }
 
   // Метод для лайка карточки
@@ -122,9 +104,6 @@ export class Api {
       headers: this._headers,
     })
       .then((res) => this._checkResponse(res))
-      .catch((err) => {
-        console.log(`Ошибка при выполнении запроса: ${err}!`);
-      });
   }
 
   // Метод для удаления лайка 
@@ -135,8 +114,5 @@ export class Api {
       headers: this._headers,
     })
       .then((res) => this._checkResponse(res))
-      .catch((err) => {
-        console.log(`Ошибка при выполнении запроса: ${err}!`);
-      });
   }
 }
